@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.sammy.pebblemaker.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "pebble_maker.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.5"
+}

@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[43,)"
+license = "All rights reserved"
+[[mods]]
+logoFile = "pebble_maker.png"
+modId = "pebble_maker"
+version = "${file.jarVersion}"
+displayName = "Pebble Maker"
+authors = "Sammy;"
+description = '''
+A cool mod for making pebbles.
+'''
+[[dependencies.pebble_maker]]
+modId = "forge"
+mandatory = true
+versionRange = "[43,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.pebble_maker]]
+modId = "minecraft"
+mandatory = true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange = "[1.19.2,1.20)"
+ordering = "NONE"
+side = "BOTH"
