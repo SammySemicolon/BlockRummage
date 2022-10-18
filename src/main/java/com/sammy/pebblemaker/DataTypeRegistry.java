@@ -1,5 +1,6 @@
 package com.sammy.pebblemaker;
 
+import com.sammy.pebblemaker.data_types.EmptyItemData;
 import com.sammy.pebblemaker.listener.PebbleCreationEntry.HeldDataType;
 import com.sammy.pebblemaker.data_types.HeldData;
 import com.sammy.pebblemaker.data_types.MatchingIngredientData;
@@ -12,6 +13,8 @@ import java.util.HashMap;
 public class DataTypeRegistry {
 
     public static final HashMap<ResourceLocation, HeldDataType<?>> DATA_TYPES = new HashMap<>();
+
+    public static HeldDataType<EmptyItemData> EMPTY_HAND = register(new HeldDataType<>(PebbleMod.path("empty_hand"), o -> new EmptyItemData()));
 
     public static HeldDataType<MatchingIngredientData> MATCHING_INGREDIENT = register(new HeldDataType<>(PebbleMod.path("matching_ingredient"), o -> {
         Ingredient ingredient = Ingredient.fromJson(o.get("ingredient"));
