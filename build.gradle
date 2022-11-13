@@ -23,7 +23,7 @@ version = "${project.minecraftVersion}-${project.modVersion}"
 if (System.getenv('BUILD_NUMBER') != null) {
     version += "." + System.getenv('BUILD_NUMBER')
 }
-group = 'com.sammy.pebblemaker'
+group = 'com.sammy.block_rummage'
 archivesBaseName = project.modId
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 

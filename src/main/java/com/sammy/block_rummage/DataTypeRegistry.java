@@ -1,10 +1,10 @@
-package com.sammy.pebblemaker;
+package com.sammy.block_rummage;
 
-import com.sammy.pebblemaker.data_types.EmptyItemData;
-import com.sammy.pebblemaker.listener.PebbleCreationEntry.HeldDataType;
-import com.sammy.pebblemaker.data_types.HeldData;
-import com.sammy.pebblemaker.data_types.MatchingIngredientData;
-import com.sammy.pebblemaker.data_types.ToolActionData;
+import com.sammy.block_rummage.data_types.EmptyItemData;
+import com.sammy.block_rummage.listener.PebbleCreationEntry.HeldDataType;
+import com.sammy.block_rummage.data_types.HeldData;
+import com.sammy.block_rummage.data_types.MatchingIngredientData;
+import com.sammy.block_rummage.data_types.ToolActionData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 

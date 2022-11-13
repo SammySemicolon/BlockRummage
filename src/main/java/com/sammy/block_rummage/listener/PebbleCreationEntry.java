@@ -1,7 +1,7 @@
-package com.sammy.pebblemaker.listener;
+package com.sammy.block_rummage.listener;
 
 import com.google.gson.JsonObject;
-import com.sammy.pebblemaker.data_types.HeldData;
+import com.sammy.block_rummage.data_types.HeldData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 

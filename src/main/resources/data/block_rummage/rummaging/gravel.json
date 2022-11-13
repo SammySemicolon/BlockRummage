@@ -1,10 +1,10 @@
 {
-  "id": "pebble_maker:flint_digging",
+  "id": "block_rummage:flint_digging",
   "target": {
     "tag" : "forge:gravel"
   },
   "held_item_data": {
-    "type": "pebble_maker:has_tool_action",
+    "type": "block_rummage:has_tool_action",
     "tool_action": "shovel_dig",
     "durability_cost": 1
   },

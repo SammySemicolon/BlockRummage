@@ -2,21 +2,21 @@ modLoader = "javafml"
 loaderVersion = "[43,)"
 license = "All rights reserved"
 [[mods]]
-logoFile = "pebble_maker.png"
-modId = "pebble_maker"
+logoFile = "block_rummage.png"
+modId = "block_rummage"
 version = "${file.jarVersion}"
-displayName = "Pebble Maker"
+displayName = "Block Rummage"
 authors = "Sammy;"
 description = '''
-A cool mod for making pebbles.
+A cool mod for digging things up!.
 '''
-[[dependencies.pebble_maker]]
+[[dependencies.block_rummage]]
 modId = "forge"
 mandatory = true
 versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.pebble_maker]]
+[[dependencies.block_rummage]]
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version

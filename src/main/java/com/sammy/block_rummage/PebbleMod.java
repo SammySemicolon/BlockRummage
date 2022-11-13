@@ -1,4 +1,4 @@
-package com.sammy.pebblemaker;
+package com.sammy.block_rummage;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(PebbleMod.MODID)
 public class PebbleMod {
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final String MODID = "pebble_maker";
+	public static final String MODID = "block_rummage";
 	public static final RandomSource RANDOM = RandomSource.create();
 
 	public PebbleMod() {

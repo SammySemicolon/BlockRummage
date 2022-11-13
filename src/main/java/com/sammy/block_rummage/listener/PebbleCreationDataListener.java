@@ -1,9 +1,9 @@
-package com.sammy.pebblemaker.listener;
+package com.sammy.block_rummage.listener;
 
 import com.google.gson.*;
-import com.sammy.pebblemaker.DataTypeRegistry;
-import com.sammy.pebblemaker.PebbleMod;
-import com.sammy.pebblemaker.data_types.HeldData;
+import com.sammy.block_rummage.DataTypeRegistry;
+import com.sammy.block_rummage.PebbleMod;
+import com.sammy.block_rummage.data_types.HeldData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -21,7 +21,7 @@ public class PebbleCreationDataListener extends SimpleJsonResourceReloadListener
     private static final Gson GSON = (new GsonBuilder()).create();
 
     public PebbleCreationDataListener() {
-        super(GSON, "pebbles");
+        super(GSON, "rummaging");
     }
 
     public static void register(AddReloadListenerEvent event) {
@@ -36,7 +36,7 @@ public class PebbleCreationDataListener extends SimpleJsonResourceReloadListener
             JsonObject object = objectIn.get(location).getAsJsonObject();
             ResourceLocation id = new ResourceLocation(object.getAsJsonPrimitive("id").getAsString());
             if (PEBBLE_CREATION_DATA.containsKey(id)) {
-                PebbleMod.LOGGER.info("Pebble loot entry with id : " + id + " already exists. Overwriting.");
+                PebbleMod.LOGGER.info("Block Rummaging loot entry with id : " + id + " already exists. Overwriting.");
             }
             Ingredient target = Ingredient.fromJson(object.getAsJsonObject("target"));
 
@@ -45,7 +45,7 @@ public class PebbleCreationDataListener extends SimpleJsonResourceReloadListener
                 JsonObject heldData = object.getAsJsonObject("held_item_data");
                 PebbleCreationEntry.HeldDataType<?> heldDataType = DataTypeRegistry.DATA_TYPES.get(new ResourceLocation(heldData.get("type").getAsString()));
                 if (heldDataType == null) {
-                    PebbleMod.LOGGER.info("Pebble loot entry with id : " + id + " attempts to reference an non existent held item data type. Skipping.");
+                    PebbleMod.LOGGER.info("Block Rummaging loot entry with id : " + id + " attempts to reference an non existent held item data type. Skipping.");
                     continue;
                 }
                 heldDataInstance = heldDataType.serializer().apply(heldData);
