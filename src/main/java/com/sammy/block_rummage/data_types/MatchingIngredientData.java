@@ -4,6 +4,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 public class MatchingIngredientData extends HeldData {
     public final Ingredient ingredient;
@@ -21,5 +22,10 @@ public class MatchingIngredientData extends HeldData {
             heldItem.hurtAndBreak(durabilityCost, player, (e) -> e.broadcastBreakEvent(hand));
         }
         return test;
+    }
+
+    @Override
+    public @NotNull Ingredient getIngredient() {
+        return ingredient;
     }
 }
