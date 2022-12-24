@@ -1,0 +1,27 @@
+{
+  "id": "block_rummage:flint_digging",
+  "target": {
+    "tag" : "forge:gravel"
+  },
+  "held_item_data": {
+    "type": "block_rummage:has_tool_action",
+    "tool_action": "shovel_dig",
+    "durability_cost": 1
+  },
+  "result": [
+    {
+      "output": {
+        "item" : "minecraft:flint"
+      },
+      "chance" : 1.0,
+      "amount": 1
+    },
+    {
+      "output": {
+        "item" : "minecraft:flint"
+      },
+      "chance" : 0.2,
+      "amount": 1
+    }
+  ]
+}

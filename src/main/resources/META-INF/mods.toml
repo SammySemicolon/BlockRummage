@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[39,)"
 license = "All rights reserved"
 [[mods]]
 logoFile = "block_rummage.png"
@@ -13,13 +13,13 @@ A cool mod for digging things up!.
 [[dependencies.block_rummage]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[39,)"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.block_rummage]]
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.19.2,1.20)"
+versionRange = "[1.18.2,1.19)"
 ordering = "NONE"
 side = "BOTH"

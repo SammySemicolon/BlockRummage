@@ -1,7 +1,6 @@
 package com.sammy.block_rummage;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -13,11 +12,8 @@ import org.apache.logging.log4j.Logger;
 public class PebbleMod {
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final String MODID = "block_rummage";
-	public static final RandomSource RANDOM = RandomSource.create();
 
 	public PebbleMod() {
-		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
-		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 	}
 
 	public static ResourceLocation path(String path) {

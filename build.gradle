@@ -17,7 +17,6 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-jarJar.enable()
 
 version = "${project.minecraftVersion}-${project.modVersion}"
 if (System.getenv('BUILD_NUMBER') != null) {
@@ -116,22 +115,10 @@ dependencies {
     }
 
     // JEI Dependency
-    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jeiVersion}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-common-api:${jeiVersion}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-forge:${jeiVersion}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}:${jeiVersion}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraftVersion}:${jeiVersion}")
 
-    // Curios dependency
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${minecraftVersion}-${curiosVersion}:api")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${minecraftVersion}-${curiosVersion}")
 
-    // Registrate dependency
-    jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: '[MC1.19-1.1.5,)') {
-        jarJar.pin(it, project.registrateVersion)
-    }
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrateVersion}")
-
-    // Other Mod Compatibility
-    implementation fg.deobf("curse.maven:farmers_delight-398521:3916069")
 }
 
 jar {
@@ -152,20 +139,10 @@ jar {
 // Workaround for SpongePowered/MixinGradle#38
 afterEvaluate {
     tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
-    tasks.configureReobfTaskForReobfJarJar.mustRunAfter(tasks.compileJava)
 }
 
 tasks.withType(GenerateModuleMetadata) {
     enabled = false
-}
-
-task jarJarRelease {
-    doLast {
-        tasks.jarJar {
-            classifier = ''
-        }
-    }
-    finalizedBy tasks.jarJar
 }
 
 java {
@@ -173,7 +150,6 @@ java {
 }
 
 jar.finalizedBy('reobfJar')
-tasks.jarJar.finalizedBy('reobfJarJar')
 
 publishing {
     publications {
