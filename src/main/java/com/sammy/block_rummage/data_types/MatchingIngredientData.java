@@ -26,7 +26,9 @@ public class MatchingIngredientData extends HeldData {
         boolean test = consumeItemInstead ? (heldItem.getCount() >= durabilityCost && ingredient.test(heldItem)) : ingredient.test(heldItem);
         if (test && durabilityCost != 0) {
             if (consumeItemInstead) {
-                heldItem.shrink(durabilityCost);
+                if (!player.isCreative()) {
+                    heldItem.shrink(durabilityCost);
+                }
             }
             else {
                 heldItem.hurtAndBreak(durabilityCost, player, (e) -> e.broadcastBreakEvent(hand));
