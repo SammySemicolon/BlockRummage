@@ -3,6 +3,7 @@ package com.sammy.block_rummage.jei;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.sammy.block_rummage.PebbleMod;
 import com.sammy.block_rummage.data_types.EmptyItemData;
+import com.sammy.block_rummage.data_types.HeldData;
 import com.sammy.block_rummage.listener.PebbleCreationEntry;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -22,7 +23,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEntry> {
 
@@ -97,10 +100,14 @@ public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEnt
     public void setRecipe(IRecipeLayoutBuilder builder, PebbleCreationEntry recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 3, 35)
                 .addIngredients(recipe.block());
-        Ingredient ingredient = recipe.data().getIngredient();
+        HeldData data = recipe.data();
+        Ingredient ingredient = data.getIngredient();
         if (!ingredient.isEmpty()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 3, 3)
-                    .addIngredients(ingredient);
+                    .addItemStacks(Arrays.stream(ingredient.getItems()).map(data::getModifiedItemStack).collect(Collectors.toList()))
+                    .addTooltipCallback((view, tooltip) -> {
+                        data.addTooltipInfoToIngredient(tooltip);
+                    });
         }
         List<PebbleCreationEntry.LootEntry> entries = recipe.lootEntries();
         int size = entries.size();
@@ -118,7 +125,7 @@ public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEnt
                     .addTooltipCallback((view, tooltip) -> {
                         float chance = lootEntry.chance();
                         if (chance != 1) {
-                            tooltip.add(1, Component.translatable("" + (chance < 0.01 ? "<1" : (int) (chance * 100))).append("% ").append(Component.translatable("block_rummage.jei.chance"))
+                            tooltip.add(1, Component.literal("" + (chance < 0.01 ? "<1" : (int) (chance * 100))).append("% ").append(Component.translatable("block_rummage.jei.chance"))
                                     .withStyle(ChatFormatting.GOLD));
                         }
                     });
