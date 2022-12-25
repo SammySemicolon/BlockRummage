@@ -25,7 +25,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEntry> {
 
@@ -114,7 +116,7 @@ public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEnt
         Ingredient ingredient = data.getIngredient();
         if (!ingredient.isEmpty()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 3, 3)
-                    .addIngredients(ingredient)
+                    .addItemStacks(Arrays.stream(ingredient.getItems()).map(data::getModifiedItemStack).collect(Collectors.toList()))
                     .addTooltipCallback(((recipeSlotView, tooltip) -> {
                         data.addTooltipInfoToIngredient(tooltip);
                     }));
