@@ -19,7 +19,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -119,7 +118,7 @@ public class PebbleMakerJEICategory implements IRecipeCategory<PebbleCreationEnt
                     .addTooltipCallback((view, tooltip) -> {
                         float chance = lootEntry.chance();
                         if (chance != 1) {
-                            tooltip.add(1, TextUtils.getTranslation("jei.chance", chance < 0.01 ? "<1" : (int) (chance * 100))
+                            tooltip.add(1, Component.translatable("" + (chance < 0.01 ? "<1" : (int) (chance * 100))).append("% ").append(Component.translatable("block_rummage.jei.chance"))
                                     .withStyle(ChatFormatting.GOLD));
                         }
                     });
