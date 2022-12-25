@@ -19,7 +19,8 @@ public class DataTypeRegistry {
     public static HeldDataType<MatchingIngredientData> MATCHING_INGREDIENT = register(new HeldDataType<>(PebbleMod.path("matching_ingredient"), o -> {
         Ingredient ingredient = Ingredient.fromJson(o.get("ingredient"));
         int durabilityCost = o.has("durability_cost") ? o.get("durability_cost").getAsInt() : 0;
-        return new MatchingIngredientData(ingredient, durabilityCost);
+        boolean consumeItemInstead = o.has("consume_item") && o.get("consume_item").getAsBoolean();
+        return new MatchingIngredientData(ingredient, durabilityCost, consumeItemInstead);
     }));
 
     public static HeldDataType<ToolActionData> HAS_TOOL_ACTION = register(new HeldDataType<>(PebbleMod.path("has_tool_action"), o -> {
