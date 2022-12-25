@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,7 +37,7 @@ public class EventHandler {
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getEntity() instanceof Player player) {
             Level level = player.getLevel();
-            if (!level.isClientSide && player.isCrouching()) {
+            if (!level.isClientSide && (player.isCrouching() || player instanceof FakePlayer)) {
                 Random random = level.random;
                 BlockPos pos = event.getPos();
                 BlockState blockState = level.getBlockState(pos);
