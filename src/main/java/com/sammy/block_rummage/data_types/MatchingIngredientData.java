@@ -2,6 +2,7 @@ package com.sammy.block_rummage.data_types;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -52,7 +53,7 @@ public class MatchingIngredientData extends HeldData {
 
     @Override
     public void addTooltipInfoToIngredient(List<Component> tooltip) {
-        tooltip.add(1, Component.translatable("block_rummage.jei.consume")
+        tooltip.add(1, new TranslatableComponent("block_rummage.jei.consume")
                 .withStyle(ChatFormatting.GOLD));
     }
 }
