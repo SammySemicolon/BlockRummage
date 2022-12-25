@@ -9,17 +9,24 @@ import org.jetbrains.annotations.NotNull;
 public class MatchingIngredientData extends HeldData {
     public final Ingredient ingredient;
     public final int durabilityCost;
+    public final boolean consumeItemInstead;
 
-    public MatchingIngredientData(Ingredient ingredient, int durabilityCost) {
+    public MatchingIngredientData(Ingredient ingredient, int durabilityCost, boolean consumeItemInstead) {
         this.ingredient = ingredient;
         this.durabilityCost = durabilityCost;
+        this.consumeItemInstead = consumeItemInstead;
     }
 
     @Override
     public boolean matches(Player player, InteractionHand hand, ItemStack heldItem) {
         boolean test = ingredient.test(heldItem);
         if (test && durabilityCost != 0) {
-            heldItem.hurtAndBreak(durabilityCost, player, (e) -> e.broadcastBreakEvent(hand));
+            if (consumeItemInstead) {
+                heldItem.shrink(durabilityCost);
+            }
+            else {
+                heldItem.hurtAndBreak(durabilityCost, player, (e) -> e.broadcastBreakEvent(hand));
+            }
         }
         return test;
     }
